@@ -106,6 +106,8 @@ r_packages=(
 	dgrtwo/broom
 	rstudio/bookdown
 	klmr/modules
+	setwidth
+	jalvesaq/colorout
 )
 
 r_modules=(
