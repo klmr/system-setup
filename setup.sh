@@ -28,15 +28,26 @@ brew install gcc
 brew install python
 brew install pandoc
 brew install zmq
+brew install ack
+brew install tree
+brew install ghostscript --with-x11
 
 brew tap neovim/neovim
 
 brew install neovim --with-release
 
+brew cask update
+
+brew cask install iterm2
 brew cask install quicksilver
 brew cask install r
 brew cask install xquartz
-# brew cask install basictex
+brew cask install google-chrome
+brew cask install google-drive
+brew cask install basictex
+brew cask install latexit
+brew cask install dropbox
+brew cask install skype
 
 # Install pip ##################################################################
 
