@@ -5,8 +5,6 @@
 #
 # THIS SCRIPT IS NOT DESIGNED TO RUN WITHOUT USER INPUT! In particular, the
 # generation of the SSH keys will ask for user interaction.
-#
-# So far it is untested and will certainly not work out of the box.
 
 # Ensure we’re in the home directory.
 
