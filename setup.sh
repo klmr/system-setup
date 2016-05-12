@@ -160,7 +160,7 @@ r_modules=(
 #'r     if (install)
 #'r         install.packages(name)
 #'r     else
-#'r        message(sprintf('Package %s up to date, skipping', dQuote(name)))
+#'r         message(sprintf('Package %s up to date, skipping', dQuote(name)))
 #'r }
 #'r 
 #'r install_package = function (name) {
