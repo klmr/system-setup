@@ -8,6 +8,7 @@
 
 # Ensure we’re in the home directory.
 
+scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
 cd ~
 
 # Install Homebrew #############################################################
@@ -158,7 +159,7 @@ r_modules=(
 #'r 
 #'r     if (install)
 #'r         install.packages(name)
-#'r    else
+#'r     else
 #'r        message(sprintf('Package %s up to date, skipping', dQuote(name)))
 #'r }
 #'r 
@@ -186,7 +187,7 @@ install-r() {
 	shift
 	local IFS=','
 	local items="$*"
-	Rscript <(grep "^#'r " "$0" | sed "s/#'r //") "$type" "$items"
+	Rscript <(grep "^#'r " "$scriptpath/$0" | sed "s/#'r //") "$type" "$items"
 }
 
 # Ensure package path exists because R insists on an existing path.
