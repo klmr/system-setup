@@ -146,13 +146,29 @@ r_modules=(
 #'r     system2('git', c('clone', sprintf('git@github.com:%s.git', name), name))
 #'r }
 #'r 
+#'r cran_install_package = function (name) {
+#'r     # Check if action is required before reinstalling package.
+#'r     installed = try(installed.packages()[name, ], silent = TRUE)
+#'r     if (inherits(installed, 'try-error')) {
+#'r         install = TRUE
+#'r     } else {
+#'r         available = available.packages()[name, ]
+#'r         install = compareVersion(installed['Version'], available['Version']) < 0
+#'r     }
+#'r 
+#'r     if (install)
+#'r         install.packages(name)
+#'r    else
+#'r        message(sprintf('Package %s up to date, skipping', dQuote(name)))
+#'r }
+#'r 
 #'r install_package = function (name) {
 #'r     # Assume either a CRAN or an unadorned Github package name.
 #'r     # Don’t do sanity check beyond that.
 #'r     stopifnot(length(name) == 1)
 #'r 
 #'r     is_cran = ! grepl('/', name)
-#'r     handler = if (is_cran) install.packages else devtools::install_github
+#'r     handler = if (is_cran) cran_install_package else devtools::install_github
 #'r     handler(name)
 #'r }
 #'r 
