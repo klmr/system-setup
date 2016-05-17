@@ -59,10 +59,16 @@ brew cask install latexit
 brew cask install dropbox
 brew cask install skype
 
-# Install pip ##################################################################
+# Install pip packages #########################################################
 
 pip install --upgrade pip
 pip install ipython[all]
+
+# Install gems #################################################################
+
+gem install bundler
+
+# Install npm packages #########################################################
 
 # Set up applications ##########################################################
 
