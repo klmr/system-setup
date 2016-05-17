@@ -30,6 +30,7 @@ brew install apparix
 brew install gcc
 brew install python
 brew install node --with-full-icu
+brew install ruby
 brew install pandoc
 brew install zmq
 brew install ack
