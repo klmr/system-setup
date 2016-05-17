@@ -11,6 +11,10 @@
 scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
 cd ~
 
+# Install Command Line Tools ###################################################
+
+xcode-select --install
+
 # Install Homebrew #############################################################
 
 if ! command -v brew > /dev/null 2>&1; then
