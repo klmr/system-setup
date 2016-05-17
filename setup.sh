@@ -30,6 +30,7 @@ brew install git
 brew install apparix
 brew install gcc
 brew install python
+brew install v8
 brew install node --with-full-icu
 brew install ruby
 brew install pandoc
