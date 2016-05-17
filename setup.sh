@@ -229,4 +229,19 @@ texlive_path="$(cd "$(kpsewhich -var-value TEXMFMAIN)/../../"; pwd -P)"
 tlmgr update --self
 tlmgr install latexmk
 
+# Install convenience scripts ##################################################
+
+curl-install() {
+	local source="$1"
+	local target="bin/$(basename "$source")"
+	if [ -x "$target" ]; then
+		return
+	fi
+	curl --progress-bar "$source" -o "$target" && chmod +x "$target"
+}
+
+mkdir -p bin
+
+curl-install 'https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat'
+
 # vim: noexpandtab
