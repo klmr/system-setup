@@ -36,6 +36,8 @@ brew tap neovim/neovim
 
 brew install neovim --with-release
 
+brew tap caskroom/cask
+
 brew cask update
 
 brew cask install iterm2
