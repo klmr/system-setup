@@ -227,7 +227,9 @@ texlive_path="$(cd "$(kpsewhich -var-value TEXMFMAIN)/../../"; pwd -P)"
 	sudo chown -R "$USER" "$texlive_path"
 
 tlmgr update --self
+
 tlmgr install latexmk
+tlmgr install titlesec
 
 # Install convenience scripts ##################################################
 
