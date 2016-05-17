@@ -9,6 +9,7 @@
 # Ensure we’re in the home directory.
 
 scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
+USER="$(whoami)"
 cd ~
 
 # Install Command Line Tools ###################################################
@@ -210,5 +211,15 @@ mkdir -p $r_lib_path
 
 install-r packages "${r_packages[@]}"
 install-r modules "${r_modules[@]}"
+
+# Install LaTeX packages #######################################################
+
+texlive_path="$(cd "$(kpsewhich -var-value TEXMFMAIN)/../../"; pwd -P)"
+
+[ "$(stat -f '%Su' "$texlive_path")" == "$USER" ] || \
+	sudo chown -R "$USER" "$texlive_path"
+
+tlmgr update --self
+tlmgr install latexmk
 
 # vim: noexpandtab
