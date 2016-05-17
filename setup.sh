@@ -25,6 +25,7 @@ brew install git
 brew install apparix
 brew install gcc
 brew install python
+brew install node --with-full-icu
 brew install pandoc
 brew install zmq
 brew install ack
