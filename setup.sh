@@ -9,20 +9,7 @@
 scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
 USER="$(whoami)"
 
-pass() {
-	echo -n
-}
-
-array-contains() {
-	local x
-	for x in "${@:2}"; do
-		if [[ "$x" == "$1" ]]; then
-			return 0
-		fi
-	done
-
-	return 1
-}
+source 'helpers.sh'
 
 # Install Command Line Tools & Homebrew ########################################
 
