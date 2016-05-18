@@ -190,6 +190,7 @@ install-tex() {
 
 	tlmgr install latexmk
 	tlmgr install titlesec
+	tlmgr install enumitem
 }
 
 # Install convenience scripts ##################################################
