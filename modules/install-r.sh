@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 #'r args = commandArgs(trailingOnly = TRUE)
 #'r type = args[1]
 #'r items = unlist(strsplit(args[-1], ','))
