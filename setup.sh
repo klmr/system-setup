@@ -39,6 +39,7 @@ install-homebrew() {
 	brew install tree
 	brew install ghostscript --with-x11
 	brew install imagemagick --with-ghostscript --with-jp2 --with-librsvg --with-libwmf --with-webp --with-x11 --with-openmp
+	brew install gist
 
 	brew tap neovim/neovim
 
