@@ -153,6 +153,7 @@ r_packages=(
 	klmr/modules
 	setwidth
 	jalvesaq/colorout
+	hadley/pryr
 )
 
 r_modules=(
