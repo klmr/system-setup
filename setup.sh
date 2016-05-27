@@ -215,7 +215,9 @@ install-scripts() {
 # Load the different installation modules ######################################
 
 for module in modules/*; do
-	source "$module"
+	if [ -f "$module" ]; then
+		source "$module"
+	fi
 done
 
 # Run installation modules #####################################################
