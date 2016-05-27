@@ -67,7 +67,9 @@ install-homebrew-cask() {
 
 install-pip() {
 	pip install --upgrade pip
+
 	pip install ipython[all]
+	pip install grip
 }
 
 # Install gems #################################################################
