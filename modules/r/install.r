@@ -57,13 +57,18 @@ cran_install_package = function (name) {
     install_package(name, install.packages)
 }
 
+github_install_package = function (name) {
+    if (! devtools::install_github(name, quiet = TRUE))
+        message(sprintf('Package %s up to date, skipping', dQuote(name)))
+}
+
 install_pkg = function (name) {
     # Assume either a CRAN or an unadorned Github package name.
     # Don’t do sanity check beyond that.
     stopifnot(length(name) == 1)
 
     is_cran = ! grepl('/', name)
-    handler = if (is_cran) cran_install_package else devtools::install_github
+    handler = if (is_cran) cran_install_package else github_install_package
     handler(name)
 }
 
