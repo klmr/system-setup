@@ -61,6 +61,7 @@ install-homebrew-cask() {
 	brew cask install latexit
 	brew cask install dropbox
 	brew cask install skype
+	brew cask install rstudio
 }
 
 # Install pip packages #########################################################
