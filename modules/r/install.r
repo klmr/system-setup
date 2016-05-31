@@ -17,6 +17,10 @@ cached_binding = function (sym, expr, env = parent.frame()) {
 
 cached_binding('cran_installed_packages', installed.packages())
 cached_binding('cran_available_packages', available.packages())
+cached_binding('bioc_available_packages',
+               available.packages(paste(biocinstallRepos()['BioCsoft'],
+                                        'src/contrib',
+                                        sep = '/')))
 
 install_package = function (name, installer, available_packages) {
     # Check if action is required before reinstalling package.
@@ -32,6 +36,12 @@ install_package = function (name, installer, available_packages) {
         installer(name)
     else
         message(sprintf('Package %s up to date, skipping', dQuote(name)))
+}
+
+bioc_lite = function (name) {
+    if (! exists('biocLite', mode = 'function'))
+        source('https://bioconductor.org/biocLite.R')
+    biocLite(name, suppressUpdates = TRUE)
 }
 
 # Installer functions
@@ -72,11 +82,17 @@ install_pkg = function (name) {
     handler(name)
 }
 
+install_bioc = function (name) {
+    install_package(name, bioc_lite, bioc_available_packages)
+}
+
 handler = switch(type,
                  module = install_module,
                  modules = install_module,
                  package = install_pkg,
                  packages = install_pkg,
+                 bioc = install_bioc,
+                 bioconductor = install_bioc,
                  stop(sprintf('Invalid type %s', dQuote(type))))
 
 invisible(lapply(items, handler))
