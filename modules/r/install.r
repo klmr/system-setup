@@ -58,7 +58,17 @@ install_module = function (name) {
     setwd(module_path)
 
     # To keep dependencies slim, use command line git.
-    system2('git', c('clone', sprintf('git@github.com:%s.git', name), name))
+    ret = suppressWarnings(system2('git',
+                                   c('clone', sprintf('git@github.com:%s.git', name), name),
+                                   stdout = TRUE, stderr = TRUE))
+
+    if (is.null(attr(ret, 'status'))) {
+        message(sprintf('Installed module %s', dQuote(name)))
+    } else if (any(grepl('fatal: destination path .* already exists', ret))) {
+        message(sprintf('Module %s up to date, skipping', dQuote(name)))
+    } else {
+        message(paste('Module', dQuote(name), ret[grepl('^ERROR:', ret)]))
+    }
 }
 
 cran_install_package = function (name) {
