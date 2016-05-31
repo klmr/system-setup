@@ -164,6 +164,10 @@ r_modules=(
 	ebi-predocs/ebits
 )
 
+r_bioc=(
+	biomaRt
+)
+
 install-r-packages() {
 	# Ensure package path exists because R insists on an existing path.
 	# And since R doesn’t set it properly we need to grep for it rather than
@@ -176,6 +180,7 @@ install-r-packages() {
 
 	install-r packages "${r_packages[@]}"
 	install-r modules "${r_modules[@]}"
+	install-r bioc "${r_bioc[@]}"
 }
 
 # Install LaTeX packages #######################################################
