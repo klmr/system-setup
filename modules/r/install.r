@@ -18,13 +18,13 @@ cached_binding = function (sym, expr, env = parent.frame()) {
 cached_binding('cran_installed_packages', installed.packages())
 cached_binding('cran_available_packages', available.packages())
 
-install_package = function (name, installer) {
+install_package = function (name, installer, available_packages) {
     # Check if action is required before reinstalling package.
     installed = try(cran_installed_packages[name, ], silent = TRUE)
     if (inherits(installed, 'try-error')) {
         install = TRUE
     } else {
-        available = cran_available_packages[name, ]
+        available = available_packages[name, ]
         install = compareVersion(installed['Version'], available['Version']) < 0
     }
 
@@ -54,7 +54,7 @@ install_module = function (name) {
 }
 
 cran_install_package = function (name) {
-    install_package(name, install.packages)
+    install_package(name, install.packages, cran_available_packages)
 }
 
 github_install_package = function (name) {
