@@ -39,8 +39,6 @@ install_package = function (name, installer, available_packages) {
 }
 
 bioc_lite = function (name) {
-    if (! exists('biocLite', mode = 'function'))
-        source('https://bioconductor.org/biocLite.R')
     biocLite(name, suppressUpdates = TRUE)
 }
 
@@ -83,6 +81,8 @@ install_pkg = function (name) {
 }
 
 install_bioc = function (name) {
+    if (! exists('biocLite', mode = 'function'))
+        source('https://bioconductor.org/biocLite.R')
     install_package(name, bioc_lite, bioc_available_packages)
 }
 
