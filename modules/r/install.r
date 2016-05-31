@@ -2,6 +2,40 @@ args = commandArgs(trailingOnly = TRUE)
 type = args[1]
 items = unlist(strsplit(args[-1], ','))
 
+# General helper functions
+
+cached_binding = function (sym, expr, env = parent.frame()) {
+    makeActiveBinding(
+        sym,
+        function () {
+            rm(list = sym, envir = env)
+            assign(sym, expr, envir = env)
+            get(sym, envir = env)
+        },
+        env)
+}
+
+cached_binding('cran_install_package', installed.packages())
+cached_binding('cran_available_packages', available.packages())
+
+install_package = function (name, installer) {
+    # Check if action is required before reinstalling package.
+    installed = try(cran_installed_packages[name, ], silent = TRUE)
+    if (inherits(installed, 'try-error')) {
+        install = TRUE
+    } else {
+        available = cran_available_packages[name, ]
+        install = compareVersion(installed['Version'], available['Version']) < 0
+    }
+
+    if (install)
+        installer(name)
+    else
+        message(sprintf('Package %s up to date, skipping', dQuote(name)))
+}
+
+# Installer functions
+
 install_module = function (name) {
     # Here we assume is a fully qualified Github project name without release
     # or similar shenanigans, to keep it simple.
@@ -20,22 +54,10 @@ install_module = function (name) {
 }
 
 cran_install_package = function (name) {
-    # Check if action is required before reinstalling package.
-    installed = try(installed.packages()[name, ], silent = TRUE)
-    if (inherits(installed, 'try-error')) {
-        install = TRUE
-    } else {
-        available = available.packages()[name, ]
-        install = compareVersion(installed['Version'], available['Version']) < 0
-    }
-
-    if (install)
-        install.packages(name)
-    else
-        message(sprintf('Package %s up to date, skipping', dQuote(name)))
+    install_package(name, install.packages)
 }
 
-install_package = function (name) {
+install_pkg = function (name) {
     # Assume either a CRAN or an unadorned Github package name.
     # Don’t do sanity check beyond that.
     stopifnot(length(name) == 1)
@@ -48,8 +70,8 @@ install_package = function (name) {
 handler = switch(type,
                  module = install_module,
                  modules = install_module,
-                 package = install_package,
-                 packages = install_package,
+                 package = install_pkg,
+                 packages = install_pkg,
                  stop(sprintf('Invalid type %s', dQuote(type))))
 
 invisible(lapply(items, handler))
