@@ -92,7 +92,7 @@ install_pkg = function (name) {
 
 install_bioc = function (name) {
     if (! exists('biocLite', mode = 'function'))
-        source('https://bioconductor.org/biocLite.R')
+        suppressMessages(source('https://bioconductor.org/biocLite.R'))
     install_package(name, bioc_lite, bioc_available_packages)
 }
 
