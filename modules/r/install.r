@@ -15,7 +15,7 @@ cached_binding = function (sym, expr, env = parent.frame()) {
         env)
 }
 
-cached_binding('cran_install_package', installed.packages())
+cached_binding('cran_installed_packages', installed.packages())
 cached_binding('cran_available_packages', available.packages())
 
 install_package = function (name, installer) {
