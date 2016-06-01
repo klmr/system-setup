@@ -167,6 +167,7 @@ r_modules=(
 
 r_bioc=(
 	biomaRt
+	Biostrings
 )
 
 install-r-packages() {
