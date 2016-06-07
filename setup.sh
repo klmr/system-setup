@@ -26,6 +26,7 @@ install-base() {
 install-homebrew() {
 	brew update
 
+	brew install bash-completion
 	brew install git
 	brew install apparix
 	brew install gcc
