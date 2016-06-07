@@ -19,6 +19,13 @@ install-base() {
 	if ! command -v brew > /dev/null 2>&1; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
+
+	login_shell="$(which bash)"
+	if [ "$SHELL" != "$login_shell" ]; then
+		grep "$login_shell" /etc/shells >/dev/null || \
+			sudo bash -c 'echo "'"$login_shell"'" >> /etc/shells'
+		chsh -s "$login_shell"
+	fi
 }
 
 # Install elementary applications ##############################################
@@ -26,6 +33,7 @@ install-base() {
 install-homebrew() {
 	brew update
 
+	brew install bash
 	brew install bash-completion2
 	brew install git
 	brew install apparix
