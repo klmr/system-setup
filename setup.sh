@@ -166,6 +166,7 @@ r_packages=(
 	setwidth
 	jalvesaq/colorout
 	hadley/pryr
+	daattali/ezknitr
 )
 
 r_modules=(
