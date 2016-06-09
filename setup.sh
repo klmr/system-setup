@@ -167,6 +167,7 @@ r_packages=(
 	jalvesaq/colorout
 	hadley/pryr
 	daattali/ezknitr
+	httr
 )
 
 r_modules=(
