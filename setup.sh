@@ -168,6 +168,7 @@ r_packages=(
 	hadley/pryr
 	daattali/ezknitr
 	httr
+	optparse
 )
 
 r_modules=(
@@ -179,6 +180,7 @@ r_modules=(
 r_bioc=(
 	biomaRt
 	Biostrings
+	DESeq2
 )
 
 install-r-packages() {
