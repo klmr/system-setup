@@ -169,6 +169,7 @@ r_packages=(
 	daattali/ezknitr
 	httr
 	optparse
+	rstudio/packrat
 )
 
 r_modules=(
