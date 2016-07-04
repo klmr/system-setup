@@ -183,6 +183,7 @@ r_bioc=(
 	biomaRt
 	Biostrings
 	DESeq2
+	piano
 )
 
 install-r-packages() {
