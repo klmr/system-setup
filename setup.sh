@@ -260,6 +260,7 @@ modules=(
 	ssh-keys
 	r-packages
 	tex
+	scripts
 )
 
 if [ "$*" != "" ]; then
