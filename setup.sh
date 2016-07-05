@@ -226,6 +226,7 @@ curl-install() {
 	local source="$1"
 	local target="bin/$(basename "$source")"
 	if [ -x "$target" ]; then
+		echo "$(basename "$target") already installed, skipping"
 		return
 	fi
 	curl --progress-bar "$source" -o "$target" && chmod +x "$target"
