@@ -234,7 +234,6 @@ curl-install() {
 install-scripts() {
 	mkdir -p bin
 
-	curl-install 'https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat'
 }
 
 # Load the different installation modules ######################################
