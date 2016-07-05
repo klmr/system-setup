@@ -234,6 +234,7 @@ curl-install() {
 install-scripts() {
 	mkdir -p bin
 
+	curl-install 'https://gist.githubusercontent.com/klmr/e51822f624292681ba98/raw/9dd556365c35587a9cd90bfef66f1f718c8eef92/printmakevars'
 }
 
 # Load the different installation modules ######################################
