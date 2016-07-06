@@ -50,10 +50,15 @@ install-homebrew() {
 	brew install imagemagick --with-ghostscript --with-jp2 --with-librsvg --with-libwmf --with-webp --with-x11 --with-openmp
 	brew install gist
 	brew install htop
+	brew install fastqc
 
 	brew tap neovim/neovim
 
 	brew install neovim --with-release
+
+	brew tap tseemann/homebrew-bioinformatics-linux
+
+	brew install trim-galore
 }
 
 install-homebrew-cask() {
