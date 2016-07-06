@@ -82,6 +82,7 @@ install-pip() {
 	pip install ipython[all]
 	pip install grip
 	pip install cutadapt
+	pip install multiqc
 }
 
 # Install gems #################################################################
