@@ -81,6 +81,7 @@ install-pip() {
 
 	pip install ipython[all]
 	pip install grip
+	pip install cutadapt
 }
 
 # Install gems #################################################################
