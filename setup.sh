@@ -88,6 +88,8 @@ install-pip() {
 	pip install grip
 	pip install cutadapt
 	pip install multiqc
+	pip install biopython
+	pip install bcbio-gff
 }
 
 # Install gems #################################################################
