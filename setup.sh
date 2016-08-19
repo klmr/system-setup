@@ -181,6 +181,7 @@ r_packages=(
 	httr
 	optparse
 	rstudio/packrat
+	rvest
 )
 
 r_modules=(
