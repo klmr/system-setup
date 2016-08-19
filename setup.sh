@@ -36,6 +36,7 @@ install-homebrew() {
 	brew install bash
 	brew install bash-completion2
 	brew install git
+	brew install wget
 	brew install apparix
 	brew install gcc
 	brew install python
