@@ -8,12 +8,13 @@
 
 scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
 USER="$(whoami)"
+SYSTEM="$(uname)"
 
 source 'helpers.sh'
 
 # Install Command Line Tools & Homebrew ########################################
 
-install-base() {
+install-base-Darwin() {
 	'xcode-select' --install
 
 	if ! command -v brew > /dev/null 2>&1; then
@@ -26,6 +27,14 @@ install-base() {
 			sudo bash -c 'echo "'"$login_shell"'" >> /etc/shells'
 		chsh -s "$login_shell"
 	fi
+}
+
+install-base-Linux() {
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+}
+
+install-base() {
+	install-base-$SYSTEM
 }
 
 # Install elementary applications ##############################################
