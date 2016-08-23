@@ -30,7 +30,9 @@ install-base-Darwin() {
 }
 
 install-base-Linux() {
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+	if ! command -v brew > /dev/null 2>&1; then
+		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+	fi
 }
 
 install-base() {
